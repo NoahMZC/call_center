@@ -358,6 +358,31 @@
     col: 13
     width: 7
     height: 8
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: |
+      <div style="border-bottom: solid 1px #4285F4;">
+
+      <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
+
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"
+       href="/dashboards/looker_demo_thelook::1___?%EC%A0%91%EC%86%8D+%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80=Chrome&%EC%9C%A0%EC%9E%85+%EA%B2%BD%EB%A1%9C=Search&%EA%B8%B0%EA%B0%84=2+weeks">1_웹페이지 접속자 분석</a>
+
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="https://megazonepartner.cloud.looker.com/dashboards/Looker_Demo_retail_block_model::group_overview_ko?%EA%B8%B0%EA%B0%84=7+days">2_매장 판매 현황</a>
+
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="/dashboards/Looker_Demo_retail_block_model::item_affinity_analysis_ko?Product+Level=product&Analysis+Timeframe=90+days&Focus+Product=&Focus+Category=&Minimum+Purchase+Frequency=%3E%3D0.005">3_제품 판매 현황</a>
+
+        <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;"   href="/dashboards/Looker_Demo_call_center::agent_performance?Agent=Tonya+Koop">4_상담원 평가</a>
+
+      </nav>
+
+      </div>
+    row: 0
+    col: 0
+    width: 24
+    height: 2
   filters:
   - name: Agent
     title: Agent
