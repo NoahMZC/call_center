@@ -4,7 +4,7 @@
   elements:
   - title: Number of Conversations
     name: Number of Conversations
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.count, transcript.conversation_start_week]
@@ -38,7 +38,7 @@
     height: 4
   - title: Average Call Duration
     name: Average Call Duration
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.average_conversation_duration]
@@ -67,7 +67,7 @@
     height: 4
   - title: High Value Clients
     name: High Value Clients
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [client.number_of_clients]
@@ -133,7 +133,7 @@
     height: 4
   - title: Number of Conversations by Category
     name: Number of Conversations by Category
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_area
     fields: [transcript__messages.number_of_messages, transcript__messages.issue_topic,
@@ -200,7 +200,7 @@
     height: 7
   - title: Average Sentiment
     name: Average Sentiment
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript__messages.average_sentiment, transcript__messages.average_sentiment_category]
@@ -225,7 +225,7 @@
     height: 4
   - title: Customer Ratings
     name: Customer Ratings
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_grid
     fields: [satisfaction_ratings.conversation_id, satisfaction_ratings.comment, satisfaction_ratings.score,
@@ -258,7 +258,7 @@
     height: 10
   - title: Conversation Duration by Category
     name: Conversation Duration by Category
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript.average_conversation_duration, transcript__messages.issue_topic,
@@ -313,7 +313,7 @@
     height: 10
   - title: Agent vs Client Speaking
     name: Agent vs Client Speaking
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_donut_multiples
     fields: [transcript__messages.total_seconds_agent_speaking, transcript__messages.total_seconds_client_speaking]
@@ -365,7 +365,7 @@
     default_value: Tonya Koop
     allow_multiple_values: true
     required: false
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     listens_to_filters: []
     field: agents.name

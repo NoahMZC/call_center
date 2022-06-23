@@ -5,7 +5,7 @@
   elements:
   - title: Number of Calls
     name: Number of Calls
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.count, transcript.conversation_start_week]
@@ -38,7 +38,7 @@
     height: 4
   - title: "% Calls Handled Without Live Agent"
     name: "% Calls Handled Without Live Agent"
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.conversation_start_week, transcript.percent_not_passed_to_live,
@@ -99,7 +99,7 @@
     height: 4
   - title: Avg Call Duration (min)
     name: Avg Call Duration (min)
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.average_conversation_duration, transcript.conversation_start_week]
@@ -135,7 +135,7 @@
     height: 4
   - title: Cost Savings Last Week
     name: Cost Savings Last Week
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript__messages.approximate_cost_savings, transcript__messages.percent_call_time_without_live_agent]
@@ -162,7 +162,7 @@
     height: 4
   - title: Average Sentiment Score
     name: Average Sentiment Score
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript__messages.average_sentiment, transcript__messages.average_sentiment_category]
@@ -191,7 +191,7 @@
     height: 4
   - title: Topics That Virtual Agents Solve Well
     name: Topics That Virtual Agents Solve Well
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript__messages.issue_subtopic, transcript__messages.percent_of_messages_without_live_agent,
@@ -255,7 +255,7 @@
     height: 9
   - title: Areas Where Clients Are Happier with Live Agent
     name: Areas Where Clients Are Happier with Live Agent
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript__messages.issue_topic, transcript__messages.average_sentiment,
@@ -312,7 +312,7 @@
     height: 9
   - title: "# Conversations by Category"
     name: "# Conversations by Category"
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_area
     fields: [transcript__messages.number_of_messages, transcript__messages.issue_topic,
@@ -378,7 +378,7 @@
     height: 8
   - title: Wait Time Tiers
     name: Wait Time Tiers
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript__messages.number_of_messages, transcript__messages.wait_time_tier,
@@ -435,7 +435,7 @@
     height: 8
   - title: Live Agent Performance Review
     name: Live Agent Performance Review
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_grid
     fields: [agents.name, transcript.average_conversation_duration, satisfaction_ratings.average_csat,
@@ -509,7 +509,7 @@
     height: 9
   - title: High Value At Risk Clients
     name: High Value At Risk Clients
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [banking_client_facts.high_value_clients, client.number_of_clients]
@@ -583,7 +583,7 @@
     height: 4
   - title: Number of Calls by Balance & Segmentation
     name: Number of Calls by Balance & Segmentation
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_scatter
     fields: [transcript.count, client.customer_segment, client.client_id, banking_client_facts.average_daily_balance]
@@ -670,7 +670,7 @@
     height: 4
   - title: Common Undetected Phrases (4 Words)
     name: Common Undetected Phrases (4 Words)
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [ngrams__question_gram.question_gram, ngrams__question_gram.count, transcript__messages.average_sentiment]
@@ -729,7 +729,7 @@
     height: 9
   - title: Calls by Customer Segmentation
     name: Calls by Customer Segmentation
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_bar
     fields: [client.customer_segment, transcript.count, transcript__messages.issue_topic]
@@ -792,7 +792,7 @@
     height: 6
   - title: Categories That Often Require Followup
     name: Categories That Often Require Followup
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_donut_multiples
     fields: [transcript.count, transcript.resolved_on_call, transcript__messages.issue_topic]
@@ -820,7 +820,7 @@
     height: 8
   - title: Conversation Volume
     name: Conversation Volume
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript.count, transcript.conversation_start_hour_of_day, transcript.conversation_start_day_of_week]
@@ -921,7 +921,7 @@
     height: 6
   - title: Areas Where Calls Are Shorter with Live Agent
     name: Areas Where Calls Are Shorter with Live Agent
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript__messages.issue_topic, transcript__messages.live_agent, transcript.average_conversation_duration]
@@ -981,7 +981,7 @@
     height: 9
   - title: Repeat Callers
     name: Repeat Callers
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_pie
     fields: [transcript.count, transcript.is_first_call]
@@ -1034,7 +1034,7 @@
     height: 6
   - title: Call Volume by Months Since Signup
     name: Call Volume by Months Since Signup
-    model: call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_line
     fields: [transcript.months_since_signup, transcript.count, banking_client_facts.average_daily_balance_tier]

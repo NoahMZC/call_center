@@ -1,5 +1,5 @@
 view: agents {
-  sql_table_name: `looker-private-demo.zendesk.users`;;
+  sql_table_name: `mzcdsc-team-200716.Looker_Demo_zendesk.users`;;
   drill_fields: [id]
 
   dimension: id {

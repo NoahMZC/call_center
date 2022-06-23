@@ -1,6 +1,6 @@
 view: transcript {
   view_label: "Conversation"
-  sql_table_name: `looker-private-demo.call_center.transcript_with_messages`;;
+  sql_table_name: `mzcdsc-team-200716.Looker_Demo_call_center.transcript_with_messages`;;
   drill_fields: [conversation_short,conversation_start_date,passed_to_live_agent,banking_client_facts.account_id, transcript__messages.number_of_messages,
     conversation_duration,transcript__messages.average_sentiment_category]
 
