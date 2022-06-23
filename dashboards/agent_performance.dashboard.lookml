@@ -1,5 +1,5 @@
 - dashboard: agent_performance
-  title: Agent Performance
+  title: 4_상담원 평가
   layout: newspaper
   elements:
   - title: Number of Conversations
