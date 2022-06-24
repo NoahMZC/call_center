@@ -8,7 +8,7 @@
   elements:
   - title: Number of Conversations
     name: Number of Conversations
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.count, transcript.conversation_start_week]
@@ -43,7 +43,7 @@
     height: 4
   - title: Average Call Duration
     name: Average Call Duration
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.average_conversation_duration]
@@ -75,7 +75,7 @@
     height: 4
   - title: High Priority Clients
     name: High Priority Clients
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [client.number_of_clients]
@@ -141,7 +141,7 @@
     height: 4
   - title: 카테고리별 상담 수
     name: 카테고리별 상담 수
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_area
     fields: [transcript__messages.number_of_messages, transcript__messages.issue_topic,
@@ -215,7 +215,7 @@
     height: 7
   - title: Average Sentiment
     name: Average Sentiment
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript__messages.average_sentiment, transcript__messages.average_sentiment_category]
@@ -242,7 +242,7 @@
     height: 4
   - title: 고객 평가 현황
     name: 고객 평가 현황
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_grid
     fields: [satisfaction_ratings.conversation_id, satisfaction_ratings.comment, satisfaction_ratings.score,
@@ -285,7 +285,7 @@
     height: 10
   - title: 카테고리별 상담 시간
     name: 카테고리별 상담 시간
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript.average_conversation_duration, transcript__messages.issue_topic,
@@ -364,7 +364,7 @@
     height: 10
   - title: 고객/상담원 대화 비율
     name: 고객/상담원 대화 비율
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     type: looker_donut_multiples
     fields: [transcript__messages.total_seconds_agent_speaking, transcript__messages.total_seconds_client_speaking]
@@ -433,14 +433,13 @@
       <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
 
         <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"
-       href="https://trial.looker.com/dashboards/4?%EC%A0%91%EC%86%8D+%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80=Chrome&%EC%9C%A0%EC%9E%85+%EA%B2%BD%EB%A1%9C=Search&%EA%B8%B0%EA%B0%84=2+weeks">1_웹페이지 접속자 분석</a>
+       href="/dashboards/looker_demo_thelook::1___?%EC%A0%91%EC%86%8D+%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80=Chrome&%EC%9C%A0%EC%9E%85+%EA%B2%BD%EB%A1%9C=Search&%EA%B8%B0%EA%B0%84=2+weeks">1_웹페이지 접속자 분석</a>
 
-         <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="https://trial.looker.com/dashboards/67?%EA%B8%B0%EA%B0%84=7+day">2_매장 판매 현황</a>
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="https://megazonepartner.cloud.looker.com/dashboards/Looker_Demo_retail_block_model::group_overview_ko?%EA%B8%B0%EA%B0%84=7+days">2_매장 판매 현황</a>
 
-        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"   href="https://trial.looker.com/dashboards/69?Product+Level=product&Analysis+Timeframe=90+days&Focus+Product=&Minimum+Purchase+Frequency=%3E%3D0.005&Focus+Category=">3_제품 판매 현황</a>
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="/dashboards/Looker_Demo_retail_block_model::item_affinity_analysis_ko?Product+Level=product&Analysis+Timeframe=90+days&Focus+Product=&Focus+Category=&Minimum+Purchase+Frequency=%3E%3D0.005">3_제품 판매 현황</a>
 
-
-        <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;"     href="https://trial.looker.com/dashboards/116?%EC%83%81%EB%8B%B4%EC%9B%90+%EB%AA%85=Tonya+Koop&%EA%B8%B0%EA%B0%84=2022%2F01%2F01+to+2022%2F06%2F16">4_상담원 평가</a>
+        <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;"   href="/dashboards/Looker_Demo_call_center::agent_performance?Agent=Tonya+Koop">4_상담원 평가</a>
 
       </nav>
 
@@ -459,7 +458,7 @@
     ui_config:
       type: advanced
       display: popover
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     listens_to_filters: []
     field: agents.name
@@ -473,7 +472,7 @@
       type: day_range_picker
       display: inline
       options: []
-    model: looker_demo_call_center
+    model: Looker_Demo_call_center
     explore: transcript
     listens_to_filters: []
     field: transcript.conversation_start_date
