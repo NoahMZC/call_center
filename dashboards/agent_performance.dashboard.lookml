@@ -1,10 +1,14 @@
-- dashboard: agent_performance
+- dashboard: '4__'
   title: 4_상담원 평가
   layout: newspaper
+  preferred_viewer: dashboards
+  crossfilter_enabled: true
+  description: ''
+  preferred_slug: 5kxrH6SEfcxWdZi1Gts3La
   elements:
   - title: Number of Conversations
     name: Number of Conversations
-    model: Looker_Demo_call_center
+    model: looker_demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.count, transcript.conversation_start_week]
@@ -31,14 +35,15 @@
     defaults_version: 1
     hidden_fields: [transcript.conversation_start_week]
     listen:
-      Agent: agents.name
-    row: 0
-    col: 3
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 30
+    col: 10
     width: 5
     height: 4
   - title: Average Call Duration
     name: Average Call Duration
-    model: Looker_Demo_call_center
+    model: looker_demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript.average_conversation_duration]
@@ -56,24 +61,26 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    single_value_title: 평균 통화 시간
+    value_format: '#.# "분"'
     comparison_label: Percent without Live Agent
     defaults_version: 1
     hidden_fields: [transcript.average_conversation_duration]
     listen:
-      Agent: agents.name
-    row: 0
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 2
     col: 8
     width: 5
     height: 4
-  - title: High Value Clients
-    name: High Value Clients
-    model: Looker_Demo_call_center
+  - title: High Priority Clients
+    name: High Priority Clients
+    model: looker_demo_call_center
     explore: transcript
     type: single_value
     fields: [client.number_of_clients]
     filters:
       transcript.count: ">0"
-      transcript.conversation_start_date: 1 weeks ago for 1 weeks
       banking_client_facts.balance_yesterday: ">5000"
     limit: 15
     column_limit: 50
@@ -126,14 +133,15 @@
     defaults_version: 1
     series_types: {}
     listen:
-      Agent: agents.name
-    row: 4
-    col: 8
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 30
+    col: 5
     width: 5
     height: 4
-  - title: Number of Conversations by Category
-    name: Number of Conversations by Category
-    model: Looker_Demo_call_center
+  - title: 카테고리별 상담 수
+    name: 카테고리별 상담 수
+    model: looker_demo_call_center
     explore: transcript
     type: looker_area
     fields: [transcript__messages.number_of_messages, transcript__messages.issue_topic,
@@ -142,7 +150,6 @@
     fill_fields: [transcript.conversation_start_week]
     filters:
       transcript__messages.issue_topic: "-NULL"
-      transcript.conversation_start_week: 52 weeks ago for 52 weeks
     sorts: [transcript__messages.number_of_messages desc 0, transcript__messages.issue_topic]
     limit: 500
     column_limit: 50
@@ -189,18 +196,26 @@
     series_labels:
       Yes - transcript__messages.number_of_messages: From Live Agent
       No - transcript__messages.number_of_messages: From Virtual Agent
+      Change Personal Information - transcript__messages.number_of_messages: 개인정보
+        변경
+      Credit Card - transcript__messages.number_of_messages: 카드 상담
+      Online Banking - transcript__messages.number_of_messages: 온라인 뱅킹
+      Open a New Account - transcript__messages.number_of_messages: 새 계좌 신설
+      Submit a Fraud Alert - transcript__messages.number_of_messages: 금융 사기 신고
+      Speak with an Advisor - transcript__messages.number_of_messages: 타 부서 연결
     ordering: none
     show_null_labels: false
     defaults_version: 1
     listen:
-      Agent: agents.name
-    row: 8
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 6
     col: 0
     width: 24
     height: 7
   - title: Average Sentiment
     name: Average Sentiment
-    model: Looker_Demo_call_center
+    model: looker_demo_call_center
     explore: transcript
     type: single_value
     fields: [transcript__messages.average_sentiment, transcript__messages.average_sentiment_category]
@@ -215,17 +230,19 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    comparison_label: Sentiment
+    single_value_title: 상담 만족도
+    comparison_label: 의 평가를 받습니다.
     defaults_version: 1
     listen:
-      Agent: agents.name
-    row: 4
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 2
     col: 3
     width: 5
     height: 4
-  - title: Customer Ratings
-    name: Customer Ratings
-    model: Looker_Demo_call_center
+  - title: 고객 평가 현황
+    name: 고객 평가 현황
+    model: looker_demo_call_center
     explore: transcript
     type: looker_grid
     fields: [satisfaction_ratings.conversation_id, satisfaction_ratings.comment, satisfaction_ratings.score,
@@ -244,21 +261,31 @@
     limit_displayed_rows: false
     enable_conditional_formatting: false
     header_text_alignment: left
-    header_font_size: 12
-    rows_font_size: 12
+    header_font_size: '12'
+    rows_font_size: '12'
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    show_sql_query_menu_options: false
+    show_totals: true
+    show_row_totals: true
+    truncate_header: false
+    series_labels:
+      satisfaction_ratings.conversation_id: 고객 ID
+      satisfaction_ratings.comment: 코멘트
+      satisfaction_ratings.score: 상담 만족도
+      transcript.conversation_start_date: 상담일
     series_types: {}
     defaults_version: 1
     listen:
-      Agent: agents.name
-    row: 15
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 13
     col: 0
     width: 12
     height: 10
-  - title: Conversation Duration by Category
-    name: Conversation Duration by Category
-    model: Looker_Demo_call_center
+  - title: 카테고리별 상담 시간
+    name: 카테고리별 상담 시간
+    model: looker_demo_call_center
     explore: transcript
     type: looker_column
     fields: [transcript.average_conversation_duration, transcript__messages.issue_topic,
@@ -267,7 +294,8 @@
     fill_fields: [transcript.conversation_start_month]
     filters:
       transcript.conversation_start_week: 1 years
-    sorts: [transcript__messages.issue_topic]
+    sorts: [transcript__messages.issue_topic, transcript.conversation_start_month
+        desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -297,6 +325,20 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    y_axes: [{label: 평균 통화 시간, orientation: left, series: [{axisId: transcript.average_conversation_duration,
+            id: Change Personal Information - transcript.average_conversation_duration,
+            name: 개인정보 변경}, {axisId: transcript.average_conversation_duration, id: Credit
+              Card - transcript.average_conversation_duration, name: 카드 관련 업무}, {
+            axisId: transcript.average_conversation_duration, id: Online Banking -
+              transcript.average_conversation_duration, name: 온라인 뱅킹}, {axisId: transcript.average_conversation_duration,
+            id: Open a New Account - transcript.average_conversation_duration, name: 새
+              계좌 신설}, {axisId: transcript.average_conversation_duration, id: Speak
+              with an Advisor - transcript.average_conversation_duration, name: 타
+              부서 연결}, {axisId: transcript.average_conversation_duration, id: Submit
+              a Fraud Alert - transcript.average_conversation_duration, name: 금융 사기
+              신고}], showLabels: true, showValues: true, unpinAxis: false, tickDensity: default,
+        tickDensityCustom: 5, type: linear}]
+    x_axis_label: 상담일
     series_types: {}
     series_colors:
       Change Personal Information - transcript.average_conversation_duration: "#4276BE"
@@ -304,16 +346,25 @@
       Open a New Account - transcript.average_conversation_duration: "#592EC2"
       Speak with an Advisor - transcript.average_conversation_duration: "#3EB0D5"
       Submit a Fraud Alert - transcript.average_conversation_duration: "#FFD95F"
+    series_labels:
+      Change Personal Information - transcript.average_conversation_duration: 개인정보
+        변경
+      Credit Card - transcript.average_conversation_duration: 카드 상담
+      Online Banking - transcript.average_conversation_duration: 온라인 뱅킹
+      Open a New Account - transcript.average_conversation_duration: 새 계좌 신설
+      Speak with an Advisor - transcript.average_conversation_duration: 타 부서 연결
+      Submit a Fraud Alert - transcript.average_conversation_duration: 금융 사기 신고
     defaults_version: 1
     listen:
-      Agent: agents.name
-    row: 15
+      상담원 명: agents.name
+      기간: transcript.conversation_start_date
+    row: 13
     col: 12
     width: 12
     height: 10
-  - title: Agent vs Client Speaking
-    name: Agent vs Client Speaking
-    model: Looker_Demo_call_center
+  - title: 고객/상담원 대화 비율
+    name: 고객/상담원 대화 비율
+    model: looker_demo_call_center
     explore: transcript
     type: looker_donut_multiples
     fields: [transcript__messages.total_seconds_agent_speaking, transcript__messages.total_seconds_client_speaking]
@@ -324,6 +375,9 @@
     series_colors:
       transcript__messages.total_seconds_agent_speaking: "#4276BE"
       transcript__messages.total_seconds_client_speaking: "#FBB555"
+    series_labels:
+      transcript__messages.total_seconds_agent_speaking: 상담원 응답 시간
+      transcript__messages.total_seconds_client_speaking: 고객 문의 시간
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -354,27 +408,39 @@
     series_types: {}
     value_labels: legend
     label_type: labPer
-    row: 0
+    listen:
+      기간: transcript.conversation_start_date
+    row: 2
     col: 13
-    width: 7
-    height: 8
+    width: 5
+    height: 4
   - name: ''
     type: text
     title_text: ''
     subtitle_text: ''
-    body_text: |
+    body_text: ''
+    row: 23
+    col: 0
+    width: 23
+    height: 7
+  - name: " (2)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: |-
       <div style="border-bottom: solid 1px #4285F4;">
 
       <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
 
         <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"
-       href="/dashboards/looker_demo_thelook::1___?%EC%A0%91%EC%86%8D+%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80=Chrome&%EC%9C%A0%EC%9E%85+%EA%B2%BD%EB%A1%9C=Search&%EA%B8%B0%EA%B0%84=2+weeks">1_웹페이지 접속자 분석</a>
+       href="https://trial.looker.com/dashboards/4?%EC%A0%91%EC%86%8D+%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80=Chrome&%EC%9C%A0%EC%9E%85+%EA%B2%BD%EB%A1%9C=Search&%EA%B8%B0%EA%B0%84=2+weeks">1_웹페이지 접속자 분석</a>
 
-        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="https://megazonepartner.cloud.looker.com/dashboards/Looker_Demo_retail_block_model::group_overview_ko?%EA%B8%B0%EA%B0%84=7+days">2_매장 판매 현황</a>
+         <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="https://trial.looker.com/dashboards/67?%EA%B8%B0%EA%B0%84=7+day">2_매장 판매 현황</a>
 
-        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"  href="/dashboards/Looker_Demo_retail_block_model::item_affinity_analysis_ko?Product+Level=product&Analysis+Timeframe=90+days&Focus+Product=&Focus+Category=&Minimum+Purchase+Frequency=%3E%3D0.005">3_제품 판매 현황</a>
+        <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;"   href="https://trial.looker.com/dashboards/69?Product+Level=product&Analysis+Timeframe=90+days&Focus+Product=&Minimum+Purchase+Frequency=%3E%3D0.005&Focus+Category=">3_제품 판매 현황</a>
 
-        <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;"   href="/dashboards/Looker_Demo_call_center::agent_performance?Agent=Tonya+Koop">4_상담원 평가</a>
+
+        <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;"     href="https://trial.looker.com/dashboards/116?%EC%83%81%EB%8B%B4%EC%9B%90+%EB%AA%85=Tonya+Koop&%EA%B8%B0%EA%B0%84=2022%2F01%2F01+to+2022%2F06%2F16">4_상담원 평가</a>
 
       </nav>
 
@@ -384,13 +450,30 @@
     width: 24
     height: 2
   filters:
-  - name: Agent
-    title: Agent
+  - name: 상담원 명
+    title: 상담원 명
     type: field_filter
     default_value: Tonya Koop
     allow_multiple_values: true
     required: false
-    model: Looker_Demo_call_center
+    ui_config:
+      type: advanced
+      display: popover
+    model: looker_demo_call_center
     explore: transcript
     listens_to_filters: []
     field: agents.name
+  - name: 기간
+    title: 기간
+    type: field_filter
+    default_value: 2022/01/01 to 2022/06/21
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: day_range_picker
+      display: inline
+      options: []
+    model: looker_demo_call_center
+    explore: transcript
+    listens_to_filters: []
+    field: transcript.conversation_start_date
